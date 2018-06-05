@@ -3,8 +3,8 @@ var connection = require("../config/connection.js");
 
 // Object for all our SQL statement functions.
 var orm = {
-  selectAll: function(tableInput, res) {//what is cb???
-    var queryString = "SELECT * FROM " + tableInput + ";";
+  selectAll: function(burgers, res) {//what is cb???
+    var queryString = "SELECT * FROM " + burgers + ";";
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
@@ -12,8 +12,8 @@ var orm = {
       res(result);
     });
   },
-  insertOne: function(table, cols, vals, res) {
-    var queryString = "INSERT INTO " + table;
+  insertOne: function(burgers, cols, vals, res) {
+    var queryString = "INSERT INTO " + burgers;
 
     queryString += " (";
     queryString += cols.toString();
@@ -33,8 +33,8 @@ var orm = {
     });
   },
   // An example of objColVals would be {name: panther, sleepy: true}
-  updateOne: function(table, objColVals, condition, res) {
-    var queryString = "UPDATE " + table;
+  updateOne: function(burgers, objColVals, condition, res) {
+    var queryString = "UPDATE " + burgers;
 
     queryString += " SET ";
     queryString += objToSql(objColVals);
