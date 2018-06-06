@@ -1,0 +1,60 @@
+<div class="container">
+  <div class ="jumbotron">
+    <img src="/assets/images/burger.png">
+    <h1 id="mainText"> Eat-Da-Burger!</h1>
+  </div>
+
+  <h2 class="lead">Add a Burger</h2>
+  <!-- <p>Enter a burger that you want to eat, then click the button.</p> -->
+
+<form class="create-update-form" action="burgers/create" method="POST">
+
+  <div class="form-group">
+    <!-- <label for="ca">Name Your burger:</label> -->
+  <!--   <textarea class="form-control input-lg" type="text" name="burger_name" rows ='3'></textarea> -->
+    <input type="text" name="burger_name" class="choice" placeholder="Enter a burger that you want to eat here, then click the button below.">
+  </div>
+  <button class = "btn btn-default btn-lg" type="submit">Add Burger</button>
+</form>
+<hr>
+
+<ol id = "left-group">
+  <h1 class="lead"></h1>
+
+  {{#each burgers}}
+    {{#unless this.devoured}}
+    <div class="input-group">
+      <li class = "list-group-item" class="text-capitalize">
+        
+        <p class="lead"> {{this.burger_name}}</p>
+
+        <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+          <input type="hidden" class = "form-control" id="toEat" name="devoured" value="true">
+          <button class="btn btn-default btn-lg" type="submit">Devour</button>
+        </form>
+       
+      </li>
+       </div>
+    {{/unless}}
+  {{/each}}
+</ol>
+
+<h2 class = "lead">You've put away HOW MANY burgers!</h2>
+<div>
+<ul id = "right-group">
+  {{#each burgers}}
+    {{#if this.devoured}}
+      <li class ="list-group-item">
+        <p classf ="lead">{{this.burger_name}}</p>
+
+      </li>
+    {{/if}}
+  {{/each}}
+</ul>
+
+</div>
+
+<form action="burgers/delete/?_method=DELETE" method="POST">
+ <button type="submit">Clear all the burgers</button>
+</form>
+</div>
