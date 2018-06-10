@@ -7,14 +7,14 @@
   <h2 class="lead">Add a Burger</h2>
   <!-- <p>Enter a burger that you want to eat, then click the button.</p> -->
 
-<form class="create-update-form" action="burgers/create" method="POST">
+<form class="create-update-form" id = "burgerform">
 
   <div class="form-group">
     <!-- <label for="ca">Name Your burger:</label> -->
   <!--   <textarea class="form-control input-lg" type="text" name="burger_name" rows ='3'></textarea> -->
-    <input type="text" name="burger_name" class="choice" placeholder="Enter a burger that you want to eat here, then click the button below.">
+    <input id = "new_burgername" type="text" name="burger_name" class="choice" placeholder="Enter a burger that you want to eat here, then click the button below.">
   </div>
-  <button class = "btn btn-default btn-lg" type="submit">Add Burger</button>
+  <button class = "btn btn-default btn-lg" type="submit" id = "burgerbtn">Add Burger</button>
 </form>
 <hr>
 
@@ -28,9 +28,9 @@
         
         <p class="lead"> {{this.burger_name}}</p>
 
-        <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+        <form>
           <input type="hidden" class = "form-control" id="toEat" name="devoured" value="true">
-          <button class="btn btn-default btn-lg" type="submit">Devour</button>
+          <button id = "devourbtn" class="btn btn-default btn-lg" type="submit">Devour</button>
         </form>
        
       </li>
@@ -54,7 +54,7 @@
 
 </div>
 
-<form action="burgers/delete/?_method=DELETE" method="POST">
+<form id = "clear-all">
  <button type="submit">Clear all the burgers</button>
 </form>
 </div>
